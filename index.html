@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yash Sharma </title>
+    <meta
+      name="description"
+      content="Portfolio of Yash Sharma — BIT Bengaluru. Building AI products and full-stack systems."
+    />
+    <meta property="og:title" content="Yash Sharma" />
+    <meta
+      property="og:description"
+      content="Portfolio of Yash Sharma — BIT Bengaluru. Building AI products and full-stack systems."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700;800&family=Space+Mono:wght@700&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64;
+        canvas.height = 64;
+        const context = canvas.getContext('2d');
+
+        if (!context) {
+          return;
+        }
+
+        context.fillStyle = '#000000';
+        context.fillRect(0, 0, 64, 64);
+        context.fillStyle = '#FFFFFF';
+        context.font = '700 28px Inter, sans-serif';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText('YS', 32, 34);
+
+        const favicon = document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.href = canvas.toDataURL('image/png');
+        document.head.appendChild(favicon);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,1006 @@
+body.era-present {
+  font-family: 'Inter', sans-serif;
+  cursor: default;
+}
+
+.present-era,
+.present-era * {
+  font-family: 'Inter', sans-serif;
+}
+
+.present-era {
+  position: relative;
+  min-height: 175vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--present-bg);
+}
+
+.present-era__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+  background-image: radial-gradient(circle, var(--present-primary) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.present-era__content {
+  position: relative;
+  z-index: 1;
+  min-height: 175vh;
+  padding: 3rem 3rem 5rem;
+}
+
+.present-era__monogram {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--present-primary);
+  text-shadow: 0 0 20px var(--present-glow);
+  will-change: transform;
+}
+
+.present-era__hero {
+  max-width: 760px;
+  padding-top: 9rem;
+}
+
+.present-era__headline {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--present-text);
+  text-wrap: balance;
+}
+
+.present-era__hero,
+.present-era__project-card,
+.present-era__experience,
+.present-era__experience-point,
+.present-era__achievement-card {
+  will-change: transform, opacity;
+}
+
+.present-era__subline {
+  margin-top: 1rem;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--present-subline);
+}
+
+.present-era__projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin-top: 4rem;
+  align-items: start;
+}
+
+.present-era__project-card,
+.present-era__achievement-card {
+  border: 1px solid var(--present-border);
+  border-radius: 12px;
+  background: var(--present-surface);
+}
+
+.present-era__project-card {
+  --project-accent: var(--present-primary);
+  position: relative;
+  display: flex;
+  min-height: 420px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 1.75rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--project-accent) 10%, transparent),
+      rgb(13 13 20 / 0%) 22%
+    ),
+    var(--present-surface);
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.present-era__project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.75rem;
+  right: 1.75rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--project-accent) 0%, transparent),
+    color-mix(in srgb, var(--project-accent) 40%, transparent),
+    color-mix(in srgb, var(--project-accent) 0%, transparent)
+  );
+  opacity: 0.8;
+}
+
+.present-era__project-card:hover {
+  border-color: color-mix(in srgb, var(--project-accent) 50%, transparent);
+  box-shadow:
+    0 18px 42px rgb(0 0 0 / 24%),
+    0 0 30px color-mix(in srgb, var(--project-accent) 16%, transparent);
+  transform: translateY(-6px);
+}
+
+.present-era__project-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.present-era__project-title-block {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.present-era__project-name {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--present-text);
+  text-wrap: balance;
+}
+
+.present-era__project-name-line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.present-era__project-name-prefix {
+  color: var(--project-accent);
+  font-size: 1.2em;
+  line-height: 1;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--project-accent) 60%, transparent);
+}
+
+.present-era__project-category,
+.present-era__tag,
+.present-era__skill-pill,
+.present-era__achievement-pill,
+.present-era__action-button {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.present-era__project-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--project-accent);
+  text-transform: uppercase;
+}
+
+.present-era__achievement-pill {
+  align-self: flex-start;
+  padding: 0.5rem 0.8rem;
+  border-color: var(--present-warm);
+  background: var(--present-warm-bg);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--present-warm);
+}
+
+.present-era__project-copy {
+  margin-top: 1.25rem;
+}
+
+.present-era__project-tagline {
+  margin-bottom: 0.75rem;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--present-body) 80%, var(--present-text) 20%);
+}
+
+.present-era__project-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--present-body);
+  max-width: 34ch;
+}
+
+.present-era__project-features {
+  margin: 0.75rem 0 0;
+}
+
+.present-era__project-feature {
+  font-size: 13px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--present-text) 85%, transparent);
+}
+
+.present-era__project-feature + .present-era__project-feature {
+  margin-top: 0.2rem;
+}
+
+.present-era__tag-list,
+.present-era__skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.present-era__project-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding-top: 1.6rem;
+}
+
+.present-era__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.72rem;
+  border-color: var(--present-tag-border);
+  background: rgb(255 255 255 / 2%);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--present-text);
+}
+
+.present-era__tag-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.present-era__tag-logo,
+.present-era__tag-fallback {
+  width: 14px;
+  height: 14px;
+}
+
+.present-era__tag-logo {
+  display: block;
+}
+
+.present-era__tag-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--present-muted) 32%, transparent);
+  border-radius: 4px;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--present-primary);
+}
+
+.present-era__project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.present-era__action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 48px;
+  padding: 0;
+  border-color: var(--project-accent, var(--present-primary));
+  color: var(--project-accent, var(--present-primary));
+  text-decoration: none;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    opacity 300ms ease;
+}
+
+.present-era__action-button:hover {
+  background: var(--project-accent, var(--present-primary));
+  color: var(--present-bg);
+}
+
+.present-era__action-button--disabled {
+  opacity: 0.4;
+}
+
+.present-era__action-icon-svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.present-era__experience {
+  max-width: 860px;
+  margin: 4rem auto 64px;
+  position: relative;
+}
+
+.present-era__experience-header {
+  margin-bottom: 40px;
+}
+
+.present-era__experience-kicker {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--present-primary);
+  text-transform: uppercase;
+}
+
+.present-era__experience-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--present-muted);
+}
+
+.present-era__experience-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(0 245 255 / 10%);
+  border-radius: 20px;
+  background: #0a0a12;
+  padding: 32px 36px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 2%);
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.present-era__experience-card:hover {
+  border-color: rgb(0 245 255 / 25%);
+  box-shadow:
+    0 16px 42px rgb(0 0 0 / 38%),
+    0 0 0 1px rgb(0 245 255 / 5%);
+}
+
+.present-era__experience-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--present-primary), transparent);
+}
+
+.present-era__experience-watermark {
+  position: absolute;
+  right: 20px;
+  bottom: -12px;
+  user-select: none;
+  pointer-events: none;
+  font-size: 92px;
+  font-weight: 800;
+  letter-spacing: -4px;
+  color: rgb(0 245 255 / 2.2%);
+}
+
+.present-era__experience-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.present-era__experience-meta {
+  min-width: 0;
+}
+
+.present-era__experience-role {
+  margin-bottom: 8px;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #f0ede6;
+}
+
+.present-era__experience-org-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.present-era__experience-org-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgb(0 245 255 / 30%);
+  border-radius: 999px;
+  background: rgb(0 245 255 / 10%);
+  font-size: 16px;
+}
+
+.present-era__experience-org {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.present-era__experience-year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border: 1px solid rgb(0 245 255 / 20%);
+  border-radius: 20px;
+  background: rgb(0 245 255 / 8%);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--present-primary);
+}
+
+.present-era__experience-divider {
+  height: 1px;
+  margin-bottom: 22px;
+  background: rgb(255 255 255 / 5%);
+}
+
+.present-era__experience-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 5%);
+  margin-bottom: 24px;
+}
+
+.present-era__experience-metric {
+  background: #0a0a12;
+  padding: 16px 18px;
+  text-align: center;
+}
+
+.present-era__experience-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--present-primary);
+  text-shadow: 0 0 14px rgb(0 245 255 / 28%);
+}
+
+.present-era__experience-metric-label {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #374151;
+  text-transform: uppercase;
+}
+
+.present-era__experience-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.present-era__experience-point + .present-era__experience-point {
+  margin-top: 16px;
+}
+
+.present-era__experience-point-accent {
+  width: 2px;
+  min-width: 2px;
+  min-height: 20px;
+  margin-top: 3px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, var(--present-primary), transparent);
+}
+
+.present-era__experience-point-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #9ca3af;
+}
+
+.present-era__experience-highlight {
+  color: var(--present-primary);
+  font-weight: 500;
+}
+
+.present-era__achievements {
+  margin-top: 4.5rem;
+}
+
+.present-era__achievements-header {
+  margin-bottom: 32px;
+}
+
+.present-era__achievements-kicker {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--present-primary);
+  text-transform: uppercase;
+}
+
+.present-era__achievements-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--present-muted);
+}
+
+.present-era__achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.present-era__achievement-card {
+  --achievement-accent: var(--present-primary);
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 16px;
+  background: #0a0a12;
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    background-color 300ms ease;
+}
+
+.present-era__achievement-card:hover {
+  border-color: color-mix(in srgb, var(--achievement-accent) 40%, transparent);
+  background: #0d0d18;
+  box-shadow:
+    -4px 8px 32px rgb(0 0 0 / 50%),
+    0 0 0 1px color-mix(in srgb, var(--achievement-accent) 8%, transparent);
+  transform: translateY(-4px) translateX(2px);
+}
+
+.present-era__achievement-card:last-child {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.present-era__achievement-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--achievement-accent), transparent);
+  border-radius: 3px 0 0 3px;
+  opacity: 0.9;
+  transition: width 300ms ease;
+}
+
+.present-era__achievement-card:hover .present-era__achievement-accent {
+  width: 4px;
+}
+
+.present-era__achievement-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.present-era__achievement-emoji {
+  font-size: 32px;
+  line-height: 1;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  font-variant-emoji: emoji;
+}
+
+.present-era__achievement-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--achievement-accent) 35%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--achievement-accent) 10%, transparent);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--achievement-accent);
+  text-transform: uppercase;
+}
+
+.present-era__achievement-title {
+  margin-bottom: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #f0ede6;
+}
+
+.present-era__achievement-context {
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.present-era__achievement-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+.present-era__achievement-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(255 255 255 / 4%);
+  font-size: 12px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--achievement-accent) 80%, transparent);
+}
+
+.present-era__achievement-stat-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--achievement-accent);
+  flex-shrink: 0;
+}
+
+.present-era__skills-marquee {
+  position: relative;
+  margin-top: 4.5rem;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.present-era__skills-marquee::before,
+.present-era__skills-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 120px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.present-era__skills-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--present-bg), transparent);
+}
+
+.present-era__skills-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--present-bg), transparent);
+}
+
+.present-era__skills-marquee-header {
+  margin-bottom: 40px;
+  padding: 0 3rem;
+}
+
+.present-era__skills-marquee-title {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--present-primary);
+  text-transform: uppercase;
+}
+
+.present-era__skills-marquee-subtitle {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--present-muted);
+}
+
+.present-era__marquee-row {
+  position: relative;
+  overflow: hidden;
+}
+
+.present-era__marquee-row + .present-era__marquee-row {
+  margin-top: 16px;
+}
+
+.present-era__marquee-track {
+  display: flex;
+  width: max-content;
+  animation-play-state: paused;
+}
+
+.present-era__marquee-track--running {
+  animation-play-state: running;
+}
+
+.present-era__marquee-track--left {
+  animation: scroll-left 35s linear infinite;
+}
+
+.present-era__marquee-track--right {
+  animation: scroll-right 28s linear infinite;
+}
+
+.present-era__marquee-row:hover .present-era__marquee-track {
+  animation-play-state: paused;
+}
+
+.present-era__skill-card {
+  --skill-accent: var(--present-primary);
+  width: 140px;
+  height: 80px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 3%);
+  text-align: center;
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease,
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.present-era__skill-card:hover {
+  border-color: color-mix(in srgb, var(--skill-accent) 50%, transparent);
+  background: color-mix(in srgb, var(--skill-accent) 5%, rgb(255 255 255 / 3%));
+  box-shadow: 0 8px 24px rgb(0 0 0 / 40%);
+  transform: translateY(-3px);
+}
+
+.present-era__skill-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.present-era__skill-card-logo,
+.present-era__skill-card-fallback {
+  width: 28px;
+  height: 28px;
+}
+
+.present-era__skill-card-logo {
+  display: block;
+}
+
+.present-era__skill-card-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--skill-accent) 40%, transparent);
+  border-radius: 8px;
+  color: var(--skill-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.present-era__skill-card-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 70%);
+  text-transform: uppercase;
+}
+
+.present-era__skill-card-category {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--skill-accent) 60%, transparent);
+  text-transform: uppercase;
+}
+
+.present-era__hint {
+  margin-top: 4rem;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--present-muted);
+  text-align: center;
+}
+
+.present-era__project-card .present-era__tag,
+.present-era__achievement-card {
+  color: var(--present-text);
+}
+
+.present-era__project-card .present-era__tag {
+  border-color: color-mix(in srgb, var(--present-muted) 55%, var(--present-primary) 12%);
+}
+
+.present-era__project-card,
+.present-era__achievement-card {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 2%);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .present-era__achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .present-era__projects {
+    grid-template-columns: 1fr;
+  }
+
+  .present-era__achievement-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .present-era__content {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .present-era__monogram {
+    left: 24px;
+  }
+
+  .present-era__hero {
+    padding-top: 8rem;
+  }
+
+  .present-era__headline {
+    font-size: clamp(2.4rem, 7vw, 3.5rem);
+  }
+
+  .present-era__skills-marquee-header {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .present-era__content {
+    padding-top: 2rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .present-era__monogram {
+    top: 28px;
+    left: 18px;
+  }
+
+  .present-era__hero {
+    padding-top: 6.75rem;
+  }
+
+  .present-era__project-card {
+    padding: 1.3rem;
+    min-height: 0;
+  }
+
+  .present-era__project-card::before {
+    left: 1.3rem;
+    right: 1.3rem;
+  }
+
+  .present-era__headline {
+    font-size: clamp(2rem, 8vw, 2.9rem);
+  }
+
+  .present-era__subline {
+    font-size: 16px;
+  }
+
+  .present-era__project-name,
+  .present-era__experience-role {
+    font-size: 22px;
+  }
+
+  .present-era__experience {
+    margin-top: 3.5rem;
+    margin-bottom: 56px;
+  }
+
+  .present-era__experience-card {
+    padding: 28px 24px;
+  }
+
+  .present-era__experience-watermark {
+    font-size: 68px;
+  }
+
+  .present-era__experience-metric {
+    padding: 12px 8px;
+  }
+
+  .present-era__experience-metric-value {
+    font-size: 24px;
+  }
+
+  .present-era__project-head {
+    flex-direction: column;
+  }
+
+  .present-era__project-desc {
+    max-width: none;
+  }
+
+  .present-era__project-actions {
+    gap: 0.6rem;
+  }
+
+  .present-era__action-button {
+    width: 56px;
+    height: 44px;
+  }
+
+  .present-era__skills-marquee {
+    padding: 48px 0;
+  }
+
+  .present-era__skills-marquee::before,
+  .present-era__skills-marquee::after {
+    width: 56px;
+  }
+
+  .present-era__skills-marquee-header {
+    margin-bottom: 28px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .present-era__skill-card {
+    width: 128px;
+    height: 76px;
+    margin-right: 12px;
+  }
+}
