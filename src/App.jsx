@@ -7,6 +7,7 @@ import PresentEra from './components/eras/PresentEra';
 import ClockDial from './components/ui/ClockDial';
 import EraIndicator from './components/ui/EraIndicator';
 import FutureCursor from './components/ui/FutureCursor';
+import MusicPlayer from './components/ui/MusicPlayer';
 import TransitionEffect from './components/ui/TransitionEffect';
 import { useEraDetection } from './hooks/useEraDetection';
 import { useScrollProgress } from './hooks/useScrollProgress';
@@ -57,6 +58,7 @@ export default function App() {
   return (
     <div className="timeline">
       <EraIndicator currentEra={currentEra} />
+      <MusicPlayer />
       <ClockDial currentEra={currentEra} scrollProgress={scrollProgress} />
       <TransitionEffect currentEra={currentEra} />
       {currentEra === 'future' ? <FutureCursor /> : null}
