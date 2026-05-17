@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 const TRACK = {
-  title: 'Für Elise',
+  title: 'Fur Elise',
   artist: 'Ludwig van Beethoven',
   src: '/fur-elise.mp3',
 };
@@ -26,7 +26,7 @@ function Icon({ path, className = 'music-player__icon' }) {
   );
 }
 
-export default function MusicPlayer() {
+export default function MusicPlayer({ currentEra }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -130,6 +130,10 @@ export default function MusicPlayer() {
     audio.currentTime = nextTime;
     setCurrentTime(nextTime);
   };
+
+  if (currentEra !== 'past') {
+    return null;
+  }
 
   return (
     <aside className="music-player" aria-label="Music player">

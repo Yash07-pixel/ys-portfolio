@@ -58,7 +58,7 @@ export default function App() {
   return (
     <div className="timeline">
       <EraIndicator currentEra={currentEra} />
-      <MusicPlayer />
+      <MusicPlayer currentEra={currentEra} />
       <ClockDial currentEra={currentEra} scrollProgress={scrollProgress} />
       <TransitionEffect currentEra={currentEra} />
       {currentEra === 'future' ? <FutureCursor /> : null}
