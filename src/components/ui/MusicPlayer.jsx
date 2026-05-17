@@ -12,6 +12,15 @@ function Icon({ path, className = 'music-player__icon' }) {
   );
 }
 
+function intersects(rectA, rectB) {
+  return !(
+    rectA.right <= rectB.left ||
+    rectA.left >= rectB.right ||
+    rectA.bottom <= rectB.top ||
+    rectA.top >= rectB.bottom
+  );
+}
+
 function isMeaningfulContent(element) {
   if (!(element instanceof HTMLElement)) {
     return false;
@@ -28,9 +37,6 @@ function isMeaningfulContent(element) {
     'card',
     'project',
     'achievement',
-    'timeline',
-    'item',
-    'badge',
     'feature',
     'skills',
     'marquee',
@@ -41,8 +47,10 @@ function isMeaningfulContent(element) {
     'photo',
     'headline',
     'subline',
-    'title',
     'desc',
+    'about',
+    'experience',
+    'contact-section__action',
   ].some((token) => className.includes(token));
 }
 
@@ -87,40 +95,41 @@ export default function MusicPlayer() {
         return;
       }
 
-      const rect = player.getBoundingClientRect();
-      const samplePoints = [
-        [rect.left + 18, rect.top + 18],
-        [rect.right - 18, rect.top + 18],
-        [rect.left + rect.width / 2, rect.top + rect.height / 2],
-        [rect.left + 18, rect.bottom - 18],
-        [rect.right - 18, rect.bottom - 18],
-      ];
+      const playerRect = player.getBoundingClientRect();
+      const candidates = Array.from(
+        document.querySelectorAll(
+          '.timeline-scroll h1, .timeline-scroll h2, .timeline-scroll h3, .timeline-scroll h4, .timeline-scroll h5, .timeline-scroll h6, .timeline-scroll p, .timeline-scroll li, .timeline-scroll a, .timeline-scroll button, .timeline-scroll [class*="card"], .timeline-scroll [class*="project"], .timeline-scroll [class*="achievement"], .timeline-scroll [class*="feature"], .timeline-scroll [class*="skills"], .timeline-scroll [class*="marquee"], .timeline-scroll [class*="vision"], .timeline-scroll [class*="status"], .timeline-scroll [class*="cta"], .timeline-scroll [class*="message"], .timeline-scroll [class*="photo"], .timeline-scroll [class*="headline"], .timeline-scroll [class*="subline"], .timeline-scroll [class*="desc"], .timeline-scroll [class*="about"], .timeline-scroll [class*="experience"]'
+        )
+      );
 
-      const nextOccluded = samplePoints.some(([x, y]) => {
-        const visibleX = Math.max(0, Math.min(window.innerWidth - 1, x));
-        const visibleY = Math.max(0, Math.min(window.innerHeight - 1, y));
+      const nextOccluded = candidates.some((element) => {
+        if (!(element instanceof HTMLElement) || !isMeaningfulContent(element)) {
+          return false;
+        }
 
-        return document.elementsFromPoint(visibleX, visibleY).some((element) => {
-          if (!(element instanceof HTMLElement)) {
-            return false;
-          }
+        if (
+          player.contains(element) ||
+          element.closest('.music-player') ||
+          element.closest('.era-indicator') ||
+          element.closest('.clock-dial') ||
+          element.closest('.future-cursor')
+        ) {
+          return false;
+        }
 
-          if (
-            player.contains(element) ||
-            element.closest('.music-player') ||
-            element.closest('.era-indicator') ||
-            element.closest('.clock-dial') ||
-            element.closest('.future-cursor')
-          ) {
-            return false;
-          }
+        const contentRect = element.getBoundingClientRect();
+        const hasVisibleArea = contentRect.width > 24 && contentRect.height > 12;
+        const inViewport =
+          contentRect.bottom > 0 &&
+          contentRect.right > 0 &&
+          contentRect.top < window.innerHeight &&
+          contentRect.left < window.innerWidth;
 
-          if (!element.closest('.timeline-scroll')) {
-            return false;
-          }
+        if (!hasVisibleArea || !inViewport) {
+          return false;
+        }
 
-          return isMeaningfulContent(element);
-        });
+        return intersects(playerRect, contentRect);
       });
 
       setIsOccluded(nextOccluded);
