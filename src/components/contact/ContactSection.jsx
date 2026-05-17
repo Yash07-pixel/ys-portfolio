@@ -182,8 +182,8 @@ export default function ContactSection() {
     {
       kind: 'email',
       label: 'Email',
-      href: `https://mail.google.com/mail/?view=cm&fs=1&to=${futureData.contact.email}`,
-      external: true,
+      href: `mailto:${futureData.contact.email}?subject=${encodeURIComponent('Hello Yash')}`,
+      external: false,
       disabled: false,
     },
     {
