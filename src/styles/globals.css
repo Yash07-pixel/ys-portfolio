@@ -452,6 +452,16 @@ body.era-future * {
     0 10px 22px rgb(0 0 0 / 20%),
     inset 0 1px 0 rgb(255 255 255 / 3%);
   backdrop-filter: blur(14px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.music-player--hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
 }
 
 .music-player__eyebrow-group,
