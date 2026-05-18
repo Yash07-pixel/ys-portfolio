@@ -100,7 +100,7 @@ export const skillsMarquee = {
 
 export const presentData = {
   monogram: 'YS',
-  headline: 'This Is What I Build.',
+  headline: 'This Is What I Built.',
   subline: 'Currently shipping. Always learning.',
   projects: [
     {
