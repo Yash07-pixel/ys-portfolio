@@ -104,6 +104,32 @@ export const presentData = {
   subline: 'Currently shipping. Always learning.',
   projects: [
     {
+      id: 'deskline',
+      name: 'Deskline',
+      category: 'AI / Internal Tools',
+      tagline:
+        'A support desk that routes, tracks, and resolves workplace tickets with AI in the loop.',
+      desc: 'Full-stack internal ticketing tool for IT, HR, Finance, and Admin support. Employees raise tickets, agents manage department queues, managers get analytics, and the app keeps the full lifecycle moving from open to resolved with notifications at every status change.',
+      tags: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'Node.js',
+        'Express',
+        'SQLite',
+        'Gemini API',
+        'Recharts',
+      ],
+      features: [
+        'Gemini suggests categories, finds similar resolved tickets, and drafts editable agent replies',
+        'Agent queue sorted by urgency and age with guarded status transitions',
+        'Analytics dashboard for ticket volume, status split, busiest department, and resolution speed',
+      ],
+      github: 'https://github.com/Yash07-pixel/deskline',
+      live: 'https://deskline.vercel.app',
+      accent: '#14B8A6',
+    },
+    {
       id: 'molgenix',
       name: 'MolGenix',
       category: 'AI / Drug Discovery',
